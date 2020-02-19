@@ -1,50 +1,57 @@
 import React, { PureComponent } from 'react';
 import { v1 } from 'uuid';
-// import {
-//   topicValues,
-//   timeValues,
-//   sortValues,
-//   PickerData,
-// } from '@pages/MainArticlesScreen/namespace';
-// import Modules from '@core/pages';
+import { SearchBar } from 'react-native-elements';
 
 import { StateProps, DispatchProps, OwnProps } from './index';
-import { MainWrapper } from './components';
-import Config from 'react-native-config';
+import {
+  MainWrapper,
+  RecipesFlatList,
+  RecipeComponent,
+  PlaceholderText,
+  PlaceholderTextWrapper,
+} from './components';
 
 type MainScreenProps = OwnProps & StateProps & DispatchProps;
+interface MainScreenState {
+  search: string;
+}
 
-class MainScreen extends PureComponent<MainScreenProps> {
-  public componentDidMount() {
-    // this.getArticles();
-  }
+class MainScreen extends PureComponent<MainScreenProps, MainScreenState> {
+  state: MainScreenState = {
+    search: '',
+  };
 
-  //   private getArticles = () => {
-  //     this.props.fetchRecipes({
-  //       page,
-  //       filters: { topic, sortBy, date },
-  //     });
-  //   };
+  public updateSearch = (search: string) => {
+    this.setState({ search });
+    search.length && this.props.fetchRecipes(search);
+  };
 
   public render() {
     const { data } = this.props;
-    console.log(Config.API_URL);
-    return <MainWrapper></MainWrapper>;
+    const { search } = this.state;
+    return (
+      <MainWrapper>
+        <SearchBar
+          placeholder="Type Ingredients Here"
+          onChangeText={this.updateSearch}
+          value={search}
+        />
+        {data.length ? (
+          <RecipesFlatList
+            data={data}
+            renderItem={({ item }: any) => <RecipeComponent recipe={item} />}
+            keyExtractor={() => v1()}
+          />
+        ) : (
+          <PlaceholderTextWrapper>
+            <PlaceholderText>
+              No recipes found. Don't forget to separate ingredients with comma.
+            </PlaceholderText>
+          </PlaceholderTextWrapper>
+        )}
+      </MainWrapper>
+    );
   }
-  //   public render() {
-  //     const { data } = this.props;
-  //     return (
-  //       <MainWrapper>
-  //         <ArticlesFlatList
-  //           data={data}
-  //           renderItem={({ item }) => <Recipe recipe={item} />}
-  //           keyExtractor={() => v1()}
-  //           ListHeaderComponent={<Filters />}
-  //           centerContent
-  //         />
-  //       </MainWrapper>
-  //     );
-  //   }
 }
 
 export default MainScreen;

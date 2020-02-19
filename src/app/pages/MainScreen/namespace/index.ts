@@ -11,3 +11,7 @@ export interface RecipeData {
   ingredients: string;
   thumbnail: string;
 }
+
+export interface RecipeDataFromAPI {
+  results: Array<RecipeData>;
+}

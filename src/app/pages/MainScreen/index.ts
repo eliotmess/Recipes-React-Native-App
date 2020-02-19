@@ -1,24 +1,18 @@
-import { compose, bindActionCreators, Dispatch } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-// import { NavigationScreenComponent } from 'react-navigation';
-// import { NavigationStackScreenProps } from 'react-navigation-stack';
-// import {
-//   NavigationStructureProps,
-//   ScreenPropsConfig,
-// } from '@common/types/navigation';
-import { MainScreenState } from './namespace';
+
+import { MainScreenState, RecipeData } from './namespace';
 import { fetchRecipes } from './store/actions';
 import MainScreen from './MainScreen';
 
 export interface DispatchProps {
-  fetchRecipes(fetchArgs: any): void;
+  fetchRecipes(fetchArgs: string): void;
 }
 
 export interface StateProps {
-  data: Array<any>;
+  data: Array<RecipeData>;
 }
 
-// export type OwnProps = NavigationStackScreenProps;
 export type OwnProps = '';
 
 interface ReducerType {
@@ -34,20 +28,7 @@ const mapStateToProps = (state: ReducerType): StateProps => {
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators({ fetchRecipes }, dispatch);
 
-const MainScreenComposed = compose(
-  connect<StateProps, DispatchProps, OwnProps, ReducerType>(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+export default connect<StateProps, DispatchProps, OwnProps, ReducerType>(
+  mapStateToProps,
+  mapDispatchToProps,
 )(MainScreen);
-
-export const MainScreenModule = {
-  module: MainScreenComposed,
-  name: 'MainScreen',
-  options: {
-    title: 'main screen',
-    headerStyle: {
-      height: 60,
-    },
-  },
-};

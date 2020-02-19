@@ -1,1 +1,2 @@
-import './src/index'
+import 'react-native-gesture-handler';
+import './src/index';

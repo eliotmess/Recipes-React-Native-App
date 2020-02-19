@@ -22,7 +22,9 @@ class ApiService {
     this.request = axios.create(config);
 
     this.request.interceptors.response.use(
-      (response: AxiosResponse) => response,
+      (response: AxiosResponse) => {
+        return response;
+      },
       (error: AxiosError) => {
         if (error && error.response) {
           const { status } = error.response;
