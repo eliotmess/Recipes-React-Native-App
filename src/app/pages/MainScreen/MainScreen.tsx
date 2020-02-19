@@ -10,6 +10,7 @@ import { v1 } from 'uuid';
 
 import { StateProps, DispatchProps, OwnProps } from './index';
 import { MainWrapper } from './components';
+import Config from 'react-native-config';
 
 type MainScreenProps = OwnProps & StateProps & DispatchProps;
 
@@ -27,6 +28,7 @@ class MainScreen extends PureComponent<MainScreenProps> {
 
   public render() {
     const { data } = this.props;
+    console.log(Config.API_URL);
     return <MainWrapper></MainWrapper>;
   }
   //   public render() {

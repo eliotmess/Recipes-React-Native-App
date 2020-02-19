@@ -3,10 +3,10 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from './app/styles/themes/defaultTheme';
+import { defaultTheme } from './styles/themes/defaultTheme';
 // import { AppWrapper } from '@styles/components/containers';
 
-import { rootStore } from './app/store';
+import { rootStore } from './store';
 import MainScreen from '@core/pages/MainScreen/MainScreen';
 
 const Stack = createStackNavigator();
@@ -20,7 +20,7 @@ const App = () => {
             <Stack.Screen
               name="MainScreen"
               component={MainScreen}
-              options={{ title: 'Recipe App' }}
+              options={{ title: 'iFM' }}
             />
           </Stack.Navigator>
         </ThemeProvider>
