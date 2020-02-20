@@ -36,8 +36,9 @@ export const RecipeScreen = ({
   return (
     <RecipeWrapper>
       <RecipeImage resizeMode="cover" source={{ uri: recipe.thumbnail }} />
-      <RecipeHeader>{recipe.title}</RecipeHeader>
-      <RecipeIngredients>{recipe.ingredients}</RecipeIngredients>
+      <RecipeHeader>{recipe.title.trim()}</RecipeHeader>
+      <RecipeIngredients>Ingredients:</RecipeIngredients>
+      <RecipeIngredients>{recipe.ingredients.trim()}</RecipeIngredients>
       <RecipeButton onPress={openRecipeInBrowser} title={'Go to site'} />
     </RecipeWrapper>
   );

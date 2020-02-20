@@ -13,8 +13,6 @@ export interface StateProps {
   data: Array<RecipeData>;
 }
 
-export type OwnProps = '';
-
 interface ReducerType {
   mainScreenReducer: MainScreenState;
 }
@@ -28,7 +26,7 @@ const mapStateToProps = (state: ReducerType): StateProps => {
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators({ fetchRecipes }, dispatch);
 
-export default connect<StateProps, DispatchProps, OwnProps, ReducerType>(
+export default connect<StateProps, DispatchProps, unknown, ReducerType>(
   mapStateToProps,
   mapDispatchToProps,
 )(MainScreen);

@@ -5,14 +5,14 @@ export const RecipeImage = styled.Image`
   height: 200px;
 `;
 export const RecipeTitle = styled.Text`
-  color: #000000;
-  font-size: 18px;
+  color: ${props => props.theme.colors.dark};
+  font-size: ${props => props.theme.font.size.large};
   width: 100%;
   text-align: center;
-  padding: 10px 0;
+  padding: ${props => props.theme.padding.medium} 0;
 `;
-export const RecipeWrapper = styled.View`
-  border: 1px solid #000000;
-  margin: 10px;
-  background-color: #fdfdfd;
+export const RecipeWrapper = styled.TouchableOpacity`
+  border: 1px solid ${props => props.theme.colors.dark};
+  margin: ${props => props.theme.margin.medium};
+  background-color: ${props => props.theme.colors.grey};
 `;

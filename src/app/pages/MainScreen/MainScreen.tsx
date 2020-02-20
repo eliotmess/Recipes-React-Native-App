@@ -1,17 +1,18 @@
 import React, { PureComponent } from 'react';
 import { v1 } from 'uuid';
 import { SearchBar } from 'react-native-elements';
+import { FlatList } from 'react-native';
 
-import { StateProps, DispatchProps, OwnProps } from './index';
+import { RecipeData } from '@core/pages/MainScreen/namespace';
+import { StateProps, DispatchProps } from './index';
 import {
   MainWrapper,
-  RecipesFlatList,
   RecipeComponent,
   PlaceholderText,
   PlaceholderTextWrapper,
 } from './components';
 
-type MainScreenProps = OwnProps & StateProps & DispatchProps;
+type MainScreenProps = StateProps & DispatchProps;
 interface MainScreenState {
   search: string;
 }
@@ -37,9 +38,9 @@ class MainScreen extends PureComponent<MainScreenProps, MainScreenState> {
           value={search}
         />
         {data.length ? (
-          <RecipesFlatList
+          <FlatList<RecipeData>
             data={data}
-            renderItem={({ item }: any) => <RecipeComponent recipe={item} />}
+            renderItem={({ item }) => <RecipeComponent recipe={item} />}
             keyExtractor={() => v1()}
           />
         ) : (

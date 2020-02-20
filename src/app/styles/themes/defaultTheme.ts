@@ -7,8 +7,6 @@ export const defaultTheme = {
     dark: '#222222',
     grey: '#a8a9bc',
     light: '#fefefe',
-    primary: '#e8ebf2',
-    secondary: '#502a37',
   },
   margin: {
     small: '5px',
