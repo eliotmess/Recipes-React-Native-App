@@ -24,7 +24,13 @@ class MainScreen extends PureComponent<MainScreenProps, MainScreenState> {
 
   public updateSearch = (search: string) => {
     this.setState({ search });
-    search.length && this.props.fetchRecipes(search);
+    if (search.length) {
+      const phrase = search
+        .split(',')
+        .map(item => item.trim())
+        .join(',');
+      this.props.fetchRecipes(phrase);
+    }
   };
 
   public render() {

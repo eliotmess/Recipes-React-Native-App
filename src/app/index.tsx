@@ -27,10 +27,16 @@ const App = () => {
               <Stack.Screen
                 name={RouteNames.MainScreen}
                 component={MainScreen}
+                options={{
+                  headerTitleAlign: 'center',
+                }}
               />
               <Stack.Screen
                 name={RouteNames.RecipeScreen}
                 component={RecipeScreen}
+                options={{
+                  headerTitleAlign: 'center',
+                }}
               />
             </Stack.Navigator>
           </AppWrapper>

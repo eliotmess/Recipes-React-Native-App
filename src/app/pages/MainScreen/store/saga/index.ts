@@ -1,7 +1,7 @@
-import { RecipeDataFromAPI } from './../../namespace/index';
 import { put, takeLatest, all, fork, call } from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
 import { getRecipesService } from '@core/services';
+import { RecipeDataFromAPI } from '@core/pages/MainScreen/namespace';
 import {
   MainScreenTypes,
   fetchRecipesSuccess,
